@@ -1,0 +1,31 @@
+%%[
+
+var @lineItems, @countLineItems, @orderNumber, @counter
+
+set @orderNumber = AttributeValue('OrderNo') 
+set @lineItems = LookupRows('Alessia_ProductsPrice','OrderNo',@orderNumber)
+
+/* OrderNo is the name of the field in the DE containing emails and order numbers */ 
+/* Alessia_ProductPrice is name of DE, OrderNO is name of field in the DE, last is variable declared above that contains NO */
+
+set @countLineItems = RowCount(@lineItems)
+
+if @countLineItems > 0 then
+
+  for @counter = 1 to @countLineItems do
+    var @lineItem, @name, @price
+
+    set @lineItem = row(@lineItems, @counter)
+    set @name = field(@lineItem,'ProductName')
+    set @price = field(@lineItem,'Price')
+]%%
+
+  <li>%%=v(@name)=%%, %%=v(@price)=%%</li>
+
+%%[ next @counter ]%%
+%%[ else ]%%
+%%[ RaiseError('No Rows Found!') ]%%
+
+/* this display error in preview */
+
+%%[ endif ]%%
