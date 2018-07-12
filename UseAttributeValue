@@ -1,0 +1,24 @@
+%%[  
+var @pointbalance, @memberLevel 
+set @pointbalance= AttributeValue ("Point Balance") 
+
+if @pointbalance < 3000 then  
+set @memberLevel= "standard" 
+else  
+set @memberLevel = "VIP" endif 
+
+]%%
+ 
+ 
+ 
+ you are a valued %%=v(@memberLevel)=%% member.<br>
+
+
+In order to view the ampscript result in preview select AmpscriptTestDE_PointBalance data extension 
+(or the one in your marketing cloud containing the data for Point Balance)
+ 
+ 
+ ("Point Balance") this is the label of the field used in the data extension that contains the values < than 3000
+ 
+The memberLevel value Standard or VIP are not in the DataExtension 
+you declare them in the ampscript and then use it for personalisation
