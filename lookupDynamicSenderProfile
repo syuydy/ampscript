@@ -1,0 +1,12 @@
+1. Retrieve owner ID with lookup AMPScript in LP
+2. Then retrieve from USER the first name and last name 
+3. Retrieve the email
+
+
+%%[ VAR @OwnerId,@UserName
+SET @OwnerId = Lookup("Contact_Salesforce","OwnerId", "Id", _SubscriberKey)
+SET @UserName = Lookup("User_Salesforce","FirstName", "Id", @OwnerId)]%%
+%%=v(@OwnerId)=%%
+%%=v(@UserName)=%%
+
+
